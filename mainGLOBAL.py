@@ -31,17 +31,17 @@ def load_data(config):
 
 
 def run_notebook(freq, window):
-    print(f"Ejecutando notebook CHARACTERISTICS para frecuencia {freq} y window {window} con {len(df.columns)} activos...")
+    print(f"Ejecutando notebook GLOBAL para frecuencia {freq} y window {window} con {len(df.columns)} activos...")
 
     # Ejecutar el notebook con el parámetro 'frequency'
     pm.execute_notebook(
-        'characteristics.ipynb',  # El archivo del notebook
-        'output_notebook_characteristics.ipynb',  # El archivo de salida (puedes usar el mismo o diferente)
+        'global.ipynb',  # El archivo del notebook
+        'output_notebook_global.ipynb',  # El archivo de salida (puedes usar el mismo o diferente)
         parameters={'frequency': freq, 'window_pred': window}  # Pasar el valor de 'frequency'
     )
 
 
-def save_results(results, output_file="final_accuracy_results_charac.csv"):
+def save_results(results, output_file="final_accuracy_results_glob.csv"):
     """Guarda los resultados en un archivo CSV."""
     df = pd.DataFrame(results, columns=['Frequency', 'Asset', 'Model', 'Accuracy', 'Vald/Test'])
     df.to_csv(output_file, index=False)
@@ -54,12 +54,12 @@ if __name__ == "__main__":
     results = []
 
     for freq, df in data_by_freq.items():
-        df.to_csv(f"processed_data_{freq}_charac.csv")
+        df.to_csv(f"processed_data_{freq}_glob.csv")
         # Ejecutar el notebook solo una vez por frecuencia
         run_notebook(freq, window)
         print(f"Ejecutado el notebook")
         # Leer el archivo generado por el notebook
-        acc_file = f'accuracy_results_{freq}_charac.csv'
+        acc_file = f'accuracy_results_{freq}_glob.csv'
         acc_data = pd.read_csv(acc_file)
 
         for _, row in acc_data.iterrows():
