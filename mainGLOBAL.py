@@ -63,7 +63,7 @@ if __name__ == "__main__":
         acc_data = pd.read_csv(acc_file)
 
         for _, row in acc_data.iterrows():
-            results.append([freq, row['Asset'], row['Model'], row['Accuracy'], row['Vald/Test']])
+            results.append([freq, row['Asset'], row['Model'], row['Accuracy'], row['What']])
     
     # Guardar los resultados finales
     save_results(results)
