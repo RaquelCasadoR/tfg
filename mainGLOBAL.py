@@ -18,7 +18,7 @@ def load_data(config):
     for freq in frequencies:
         dfs = []
         for symbol in symbols:
-            file_name = f"{symbol}_{freq}_01-01-2016_01-01-2025.csv"
+            file_name = f"Datos/{symbol}_{freq}_01-01-2016_01-01-2025.csv"
             df = pd.read_csv(file_name, index_col='timestamp')
             df = df[['close']].rename(columns={'close': f'{symbol}_{freq}'})  # Renombrar columna para evitar conflictos
             dfs.append(df)
@@ -41,9 +41,9 @@ def run_notebook(freq, window):
     )
 
 
-def save_results(results, output_file="final_accuracy_results_glob.csv"):
+def save_results(results, output_file="final_results_glob.csv"):
     """Guarda los resultados en un archivo CSV."""
-    df = pd.DataFrame(results, columns=['Frequency', 'Asset', 'Model', 'Accuracy', 'Vald/Test'])
+    df = pd.DataFrame(results, columns=['Frequency', 'Asset', 'Model', 'Value', 'What'])
     df.to_csv(output_file, index=False)
 
 
@@ -59,11 +59,11 @@ if __name__ == "__main__":
         run_notebook(freq, window)
         print(f"Ejecutado el notebook")
         # Leer el archivo generado por el notebook
-        acc_file = f'accuracy_results_{freq}_glob.csv'
+        acc_file = f'results_{freq}_glob.csv'
         acc_data = pd.read_csv(acc_file)
 
         for _, row in acc_data.iterrows():
-            results.append([freq, row['Asset'], row['Model'], row['Accuracy'], row['What']])
+            results.append([freq, row['Asset'], row['Model'], row['Value'], row['What']])
     
     # Guardar los resultados finales
     save_results(results)
