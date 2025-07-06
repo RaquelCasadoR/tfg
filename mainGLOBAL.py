@@ -18,7 +18,7 @@ def load_data(config):
     for freq in frequencies:
         dfs = []
         for symbol in symbols:
-            file_name = f"Datos/{symbol}_{freq}_01-01-2016_01-01-2025.csv"
+            file_name = f"{symbol}_{freq}_01-01-2016_01-01-2025.csv"
             df = pd.read_csv(file_name, index_col='timestamp')
             df = df[['close']].rename(columns={'close': f'{symbol}_{freq}'})  # Renombrar columna para evitar conflictos
             dfs.append(df)
