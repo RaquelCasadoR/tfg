@@ -1,9 +1,9 @@
 pandas
 numpy
 scikit-learn
+statsmodels
 matplotlib
-os
-re
+tqdm
 papermill
 optuna
-talib
+TA-Lib

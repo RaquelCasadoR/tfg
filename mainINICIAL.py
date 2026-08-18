@@ -34,7 +34,7 @@ def run_notebook(freq):
 
     # Ejecutar el notebook con el parámetro 'frequency'
     pm.execute_notebook(
-        'INICIAL.ipynb',  # El archivo del notebook
+        'inicial.ipynb',  # El archivo del notebook
         'output_notebook_inic.ipynb',  # El archivo de salida (puedes usar el mismo o diferente)
         parameters={'frequency': freq}  # Pasar el valor de 'frequency'
     )
