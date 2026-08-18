@@ -107,4 +107,4 @@ Then open `trading_strategy.ipynb` for Experiment 4.
 
 ## Author
 
-Raquel Casado — [add LinkedIn / contact here]
+Raquel Casado — www.linkedin.com/in/raquel-casado-del-río
